@@ -301,9 +301,12 @@ create_runtime_dirs() {
 
 write_env_file() {
     local port="$1"
+    local public_ip
+    public_ip="$(detect_server_ip)"
     cat >"${ENV_FILE}" <<EOF
 M_UI_ROOT=${INSTALL_ROOT}
 M_UI_ADDR=0.0.0.0:${port}
+M_UI_PUBLIC_IP=${public_ip}
 EOF
 }
 
